@@ -5,29 +5,64 @@ import java.util.ArrayList;
  * @author Kurt Marcinkiewicz
  */
 public class ImageSegmentGraph {
-  public ArrayList<ImageSegmentNode> imageSegmentNodes = new ArrayList<ImageSegmentNode>();
-  public ArrayList<ImageSegmentEdge> imageSegmentEdges = new ArrayList<ImageSegmentEdge>();
+  private ArrayList<ImageSegmentNode> imageSegmentNodes = new ArrayList<ImageSegmentNode>();
+  private ArrayList<ImageSegmentEdge> imageSegmentEdges = new ArrayList<ImageSegmentEdge>();
 
   public ImageSegmentGraph() { }
 
+  /**
+   * Adds a node to the graph. Creates an edge between every the new node and every existing node
+   * in the graph.
+   * @param node the node to be added
+   * @return true if the node is added successfully
+   */
   public boolean addImageSegmentNode(ImageSegmentNode node) {
-    for (int i = 0; i < imageSegmentNodes.size(); i++) {
-      ImageSegmentEdge edge = new ImageSegmentEdge(imageSegmentNodes.size(), i, setWeight(node, imageSegmentNodes.get(i)));
-      addImageSegmentEdge(edge);
+    if (!imageSegmentNodes.add(node)) {
+      return false;
     }
-
-    System.out.println(imageSegmentNodes.contains(node));
-    return imageSegmentNodes.add(node);
+    else {
+      for (int i = 0; i < imageSegmentNodes.size() - 1; i++) {
+        ImageSegmentEdge edge = new ImageSegmentEdge(imageSegmentNodes.size() - 1, i,
+                                                     setWeight(node, imageSegmentNodes.get(i)));
+        if (!addImageSegmentEdge(edge)) {
+          return false;
+        }
+      }
+      System.out.println(imageSegmentNodes.contains(node));
+      return true;
+    }
   }
 
-  protected boolean addImageSegmentEdge(ImageSegmentEdge edge) {
+  /**
+   * @return the nodes
+   */
+  public ArrayList<ImageSegmentNode> getImageSegmentNodes() {
+    return imageSegmentNodes;
+  }
+
+  /**
+   * @return the edges
+   */
+  public ArrayList<ImageSegmentEdge> getImageSegmentEdges() {
+    return imageSegmentEdges;
+  }
+
+  /**
+   * Adds an edge to the graph.
+   * @param edge the edge to be added
+   * @return true if the edge is added successfully
+   */
+  private boolean addImageSegmentEdge(ImageSegmentEdge edge) {
     return imageSegmentEdges.add(edge);
   }
 
-  public boolean removeImageSegmentEdge(ImageSegmentEdge edge) {
-    return imageSegmentEdges.remove(edge);
-  }
-
+  /**
+   * Creates a weight between two nodes by calculating the distance between them from all of their
+   * attributes.
+   * @param a the first node
+   * @param b the second node
+   * @return the weight of the edge
+   */
   private double setWeight(ImageSegmentNode a, ImageSegmentNode b) {
     return Math.sqrt(
         Math.pow(a.getRegionCentroidCol() - b.getRegionCentroidCol(), 2) +
