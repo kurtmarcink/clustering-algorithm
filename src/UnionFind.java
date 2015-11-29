@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 /**
  * A representation of a union-find data structure for use with Kruskal's algorithm
@@ -84,10 +85,10 @@ public class UnionFind {
    * @return the initialized hash map
    */
   private HashMap<Integer, ArrayList<Integer>> generateHashMap(int[] items) {
-    HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>(items.length);
+    HashMap<Integer, ArrayList<Integer>> map = new HashMap<>(items.length);
 
     for(int i = 0; i < items.length; i++) {
-      map.put(i, new ArrayList<Integer>());
+      map.put(i, new ArrayList<>());
       map.get(i).add(i);
     }
     return map;
@@ -100,11 +101,6 @@ public class UnionFind {
    * @return the initialized array
    */
   private int[] generateSetsArray(int[] items) {
-    setsArray = new int[items.length];
-
-    for(int i = 0; i < items.length; i++) {
-      setsArray[i] = i;
-    }
-    return setsArray;
+    return IntStream.range(0, items.length).toArray();
   }
 }

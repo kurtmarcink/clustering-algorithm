@@ -255,12 +255,12 @@ public class ImageSegmentNode {
   /**
    * the different image segment classes
    */
-  private enum SegmentClass {
+  public enum SegmentClass {
     BRICKFACE("brickface"), SKY("sky"), FOLIAGE("foliage"), CEMENT("cement"), WINDOW("window"),
     PATH("path"), GRASS("grass");
 
     private String value;
-    private static final HashMap<String, SegmentClass> lookup = new HashMap<String, SegmentClass>();
+    private static final HashMap<String, SegmentClass> lookup = new HashMap<>();
 
     /**
      * allow constant-time constant lookup by its string value

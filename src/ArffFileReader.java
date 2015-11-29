@@ -35,10 +35,6 @@ public class ArffFileReader {
       ImageSegmentNode node = processLine(sc.nextLine());
       graph.addImageSegmentNode(node);
     }
-    System.out.println(graph.getImageSegmentNodes().size());
-    System.out.println(graph.getImageSegmentEdges().size());
-
-    System.out.println("");
 
     return graph;
   }

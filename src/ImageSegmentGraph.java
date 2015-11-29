@@ -5,8 +5,8 @@ import java.util.ArrayList;
  * @author Kurt Marcinkiewicz
  */
 public class ImageSegmentGraph {
-  private ArrayList<ImageSegmentNode> imageSegmentNodes = new ArrayList<ImageSegmentNode>();
-  private ArrayList<ImageSegmentEdge> imageSegmentEdges = new ArrayList<ImageSegmentEdge>();
+  private ArrayList<ImageSegmentNode> imageSegmentNodes = new ArrayList<>();
+  private ArrayList<ImageSegmentEdge> imageSegmentEdges = new ArrayList<>();
 
   public ImageSegmentGraph() { }
 
@@ -28,7 +28,6 @@ public class ImageSegmentGraph {
           return false;
         }
       }
-      System.out.println(imageSegmentNodes.contains(node));
       return true;
     }
   }
@@ -45,6 +44,10 @@ public class ImageSegmentGraph {
    */
   public ArrayList<ImageSegmentEdge> getImageSegmentEdges() {
     return imageSegmentEdges;
+  }
+
+  public String toString() {
+    return "NODES: " + imageSegmentNodes.size() + " EDGES: " + imageSegmentEdges.size();
   }
 
   /**
