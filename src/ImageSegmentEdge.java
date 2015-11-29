@@ -33,7 +33,6 @@ public class ImageSegmentEdge implements Comparable<ImageSegmentEdge> {
   }
 
   /**
-   *
    * @return the weight of the edge
    */
   public double getWeight() {
@@ -53,7 +52,12 @@ public class ImageSegmentEdge implements Comparable<ImageSegmentEdge> {
     }
   }
 
+  @Override
   public String toString() {
-    return Double.toString(weight);
+    return "ImageSegmentEdge{" +
+           "a=" + getA() +
+           ", b=" + getB() +
+           ", weight=" + getWeight() +
+           '}';
   }
 }
