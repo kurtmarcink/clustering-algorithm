@@ -1,8 +1,8 @@
 ##To Compile
-javac Main.java
+`javac Main.java`
 
 ##To Run
-java Main
+`java Main`
 
 ##To Use
 1. Enter the number of clusters you wish to use
