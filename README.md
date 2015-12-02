@@ -5,5 +5,5 @@
 `java Main`
 
 ##To Use
-1. Enter the number of clusters you wish to use
-2. Enter the path to the .arff file where the data exists.
+1. Enter the path to the .arff file you wish to use.
+2. Answer the questions about what data you would like to be displayed in the console.
